@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+html, body
+{
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  overflow: hidden;
+}
+</style>
+
+<script src='{{ static_prefix }}/loadwabac.js'></script>
+<script>
+  new WabacLiveProxy("{{ wb_prefix }}", "{{ url }}", "{{ timestamp }}").init();
+</script>
+
+{% autoescape false %}
+
+{{ banner_html }}
+
+{% include 'vue_loc.html' %}
+
+</head>
+<body style="margin: 0px; padding: 0px;">
+
+<div id="app" style="width: 100%; height: 200px"></div>
+<script>
+  VueUI.main({
+      staticPrefix: "{{ static_prefix }}",
+      url: "{{ url }}",
+      prefix: "{{ wb_prefix }}",
+      timestamp: "{{ timestamp }}",
+      logoUrl: "{{ ui.logo }}",
+      navbarBackground: "{{ ui.navbar_background_hex | default('f8f9fa') }}",
+      navbarColor: "{{ ui.navbar_color_hex | default('212529') }}",
+      navbarLightButtons: "{{ ui.navbar_light_buttons }}",
+      logoHomeUrl: "{{ ui.logo_home_url }}",
+      disablePrinting: "{{ ui.disable_printing }}",
+      allLocales: allLocales
+    },
+    "{{ env.pywb_lang | default('en') }}",
+    i18nStrings);
+</script>
+
+<div id="wb_iframe_div">
+<iframe id="replay_iframe" frameborder="0" seamless="seamless" scrolling="yes" class="wb_iframe" allow="autoplay; fullscreen"></iframe>
+</div>
+</body>
+</html>
+{% endautoescape %}
+
