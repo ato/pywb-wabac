@@ -5,7 +5,6 @@ class WabacLiveProxy
     this.url = url;
     this.ts = ts;
     this.collName = new URL(prefix, "http://dummy").pathname.split('/')[1];
-    this.matchRx = new RegExp(`${this.collName}\\/([\\d]+)?\\w\\w_\\/(.*)`);
     this.adblockUrl = undefined;
 
     this.queryParams = {};
