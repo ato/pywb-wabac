@@ -6,7 +6,7 @@ from werkzeug.routing import Rule
 
 class MyApp(FrontEndApp):
     def __init__(self, custom_config):
-        super().__init__(custom_config)
+        super().__init__(custom_config=custom_config)
         self.url_map.add(Rule('/static/sw.js', endpoint=self.serve_sw))
 
     def serve_sw(self, environ, coll=''):
