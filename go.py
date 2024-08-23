@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from pywb.apps.cli import ReplayCli
 from pywb.apps.frontendapp import FrontEndApp
 from werkzeug.routing import Rule

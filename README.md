@@ -12,13 +12,13 @@ From the root directory of this repo:
 1. Install pywb: `pip install pywb`
 2. Add a collection: `wb-manager init test`
 3. Add some WARCs to the collection: `wb-managed add test mywarc.warc.gz`
-4. Run it: `python go.py --port 8080`
+4. Run it: `./go.py --port 8080`
 
 How this works
 --------------
 
-We override [template/frame_insert.html][template/frame_insert.html] to use [static/loadwabac.js](static/loadwabac.js)
-instead of pywb's normal wb_frame.js. This registers the wabac.js serviceworker (sw.js).
+We override [template/frame_insert.html](template/frame_insert.html) to use [static/loadwabac.js](static/loadwabac.js)
+instead of pywb's normal wb_frame.js. This registers the wabac.js serviceworker (static/sw.js).
 
 wabac.js is configured in live proxy mode to load resources from pywb using the `id_` modifier.
 
