@@ -43,7 +43,7 @@ class WabacLiveProxy
         isLive: false,
         baseUrl: baseUrl.href,
         baseUrlHashReplay: true,
-        noPostToGet: true,
+        noPostToGet: false,
         archivePrefix: `/${this.collName}/`,
         adblockUrl: this.adblockUrl
       },
@@ -64,11 +64,18 @@ class WabacLiveProxy
       window.WBBanner.onMessage(event);
     });
 
+    window.cframe = this;
+
     if (inited) {
       await inited;
     }
 
+    this.load_url(this.url, this.ts);
+  }
+
+  // called by the Vue banner when the timeline is clicked
+  load_url(url, ts) {
     const iframe = document.querySelector("#replay_iframe");
-    iframe.src = `/w/${this.collName}/${this.ts}mp_/${this.url}`;
+    iframe.src = `/w/${this.collName}/${ts}mp_/${url}`;
   }
 }
